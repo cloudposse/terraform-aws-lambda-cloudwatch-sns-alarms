@@ -7,7 +7,7 @@ locals {
 
   alert_for     = "lambda"
   sns_topic_arn = "${var.sns_topic_arn == "" ? aws_sns_topic.default.arn : var.sns_topic_arn }"
-  endpoints = "${distinct(compact(concat(list(local.sns_topic_arn), var.additional_endpoint_arns)))}"
+  endpoints     = "${distinct(compact(concat(list(local.sns_topic_arn), var.additional_endpoint_arns)))}"
 }
 
 ## Units: Count
